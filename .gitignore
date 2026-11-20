@@ -1,1 +1,22 @@
-./dataset/img
+# 忽略訓練與測試影像
+/datasets/img/train/
+/datasets/img/test/
+
+# 忽略模型訓練輸出
+/outputs/
+
+# Python 快取
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Python 虛擬環境
+.venv/
+venv/
+
+# 模型權重
+*.pth
+*.pt
+
+# TensorBoard 記錄
+events.out.tfevents.*
