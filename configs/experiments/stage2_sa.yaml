@@ -1,0 +1,12 @@
+include: ../stage2.yaml
+stage: 2
+strategy:
+  kind: sa
+sa:
+  candidates: 30
+  interval_epochs: 5
+  branch_optimizer_steps: 200
+  val_subset: 32
+  sample_steps: 20
+  temperature: 1.0
+  min_temperature: 0.01

@@ -1,0 +1,16 @@
+# 這份清單會在容器建好後安裝
+numpy>=1.26
+pandas
+matplotlib>=3.8
+scipy
+scikit-learn
+opencv-python
+tqdm
+pyyaml>=6
+tensorboard>=2.16
+jupyterlab
+ipykernel
+torchinfo
+scikit-image
+pytest>=8.0
+pillow>=10

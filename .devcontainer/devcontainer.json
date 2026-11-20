@@ -1,0 +1,110 @@
+
+{
+  "name": "PyTorch Edge Diffusion",
+
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+
+  // 啟用 NVIDIA GPU
+  "runArgs": [
+    "--gpus",
+    "all",
+    "--shm-size",
+    "2gb"
+  ],
+
+  // 容器以主機相同的 UID/GID 執行
+  "containerUser": "1000:1000",
+
+  // 專案工作目錄
+  "workspaceFolder": "/workspaces/edge_guide_diffussion",
+
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/edge_guide_diffussion,type=bind",
+
+  // 額外掛載資料夾
+  "mounts": [
+    // 專案資料唯讀
+    "source=${localWorkspaceFolder},target=/data/edge_guide_diffussion,type=bind,readonly",
+
+    // 訓練輸出可寫
+    "source=/mnt/D/yhworkspace/edge_guide_diffussion_outputs,target=/data/outputs,type=bind"
+  ],
+
+  "features": {},
+
+  "containerEnv": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONUNBUFFERED": "1"
+  },
+
+
+
+{
+  "name": "PyTorch Edge Diffusion",
+
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+
+  // 使用 NVIDIA Runtime（已在主機測試成功）
+  "runArgs": [
+    "--runtime=nvidia",
+    "--shm-size=2gb"
+  ],
+
+  // 使用 Dockerfile 建立的正式使用者
+  "remoteUser": "yhlin",
+  "containerUser": "yhlin",
+
+  // 主機與容器使用者均為 UID/GID 1000
+  "updateRemoteUserUID": false,
+
+  // 專案工作目錄
+  "workspaceFolder": "/workspaces/edge_guide_diffussion",
+
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/edge_guide_diffussion,type=bind",
+
+  // 額外資料掛載
+  "mounts": [
+    // 專案資料唯讀
+    "source=${localWorkspaceFolder},target=/data/edge_guide_diffussion,type=bind,readonly",
+
+    // 訓練輸出可讀寫
+    "source=/mnt/D/yhworkspace/edge_guide_diffussion_outputs,target=/data/outputs,type=bind"
+  ],
+
+  "features": {},
+
+  "containerEnv": {
+    "HOME": "/home/yhlin",
+    "NVIDIA_VISIBLE_DEVICES": "all",
+    "NVIDIA_DRIVER_CAPABILITIES": "compute,utility",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONUNBUFFERED": "1"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.cwd": "/workspaces/edge_guide_diffussion",
+        "editor.formatOnSave": true,
+        "python.defaultInterpreterPath": "/opt/conda/bin/python"
+      }
+    }
+  },
+
+  "postCreateCommand": "bash .devcontainer/postCreate.sh",
+
+  "shutdownAction": "stopContainer"
+}
+

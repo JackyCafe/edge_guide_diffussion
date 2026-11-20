@@ -1,0 +1,10 @@
+include: base.yaml
+stage: 1
+training:
+  lr: 0.0001
+  d_lr_ratio: 0.2
+strategy:
+  kind: fixed
+  weights: {wbce: 1.0, dice: 1.0, fm: 0.1, adv: 0.01}
+loss:
+  pos_weight: 5.0

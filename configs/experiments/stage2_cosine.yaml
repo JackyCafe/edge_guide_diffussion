@@ -1,0 +1,8 @@
+include: ../stage2.yaml
+stage: 2
+strategy:
+  kind: cosine
+  start: {noise: 1.0, hole: 0.5, boundary: 0.1, vgg: 0.01, adv: 0.005, fm: 0.1}
+  end: {noise: 1.0, hole: 1.0, boundary: 0.5, vgg: 0.1, adv: 0.005, fm: 0.1}
+  lr_start: 0.0001
+  lr_end: 0.000001

@@ -1,0 +1,33 @@
+seed: 42
+dataset:
+  root: datasets/images
+  manifest_dir: datasets/manifests
+  image_size: 512
+  channels: auto  # Detect 1-channel grayscale or 3-channel RGB; homogeneous per run
+  mask_min: 0.2
+  mask_max: 0.45
+training:
+  device: auto
+  epochs: 200
+  batch_size: 4
+  num_workers: 2
+  accumulation: 1
+  lr: 0.0001
+  min_lr_ratio: 0.1
+  warmup_epochs: 5
+  amp: false
+  checkpoint_every: 5
+  val_every: 1
+  output_dir: outputs
+model:
+  base_channels: 32
+  time_dim: 128
+strategy:
+  kind: fixed
+  weights: {}
+sa:
+  temperature: 0.05
+  cooling: 0.95
+  min_temperature: 0.001
+  candidates: 20
+  branch_epochs: 2

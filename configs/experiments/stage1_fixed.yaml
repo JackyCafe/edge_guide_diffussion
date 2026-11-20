@@ -1,0 +1,4 @@
+include: ../stage1.yaml
+stage: 1
+strategy:
+  kind: fixed

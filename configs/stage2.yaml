@@ -1,0 +1,22 @@
+include: base.yaml
+stage: 2
+training:
+  lr: 0.0001
+  accumulation: 4
+strategy:
+  kind: fixed
+  weights: {noise: 1.0, hole: 1.0, boundary: 0.5, vgg: 0.1, adv: 0.005, fm: 0.1}
+loss:
+  snr_gamma: 5.0
+  snr_weighting: true
+  vgg_enabled: true
+  gan_start_epoch: 150
+  vgg_max_t: 500
+  boundary_kernel: 11
+diffusion:
+  timesteps: 1000
+  beta_start: 0.0001
+  beta_end: 0.02
+  sample_steps: 50
+checkpoint:
+  stage1: outputs/experiments/stage1_fixed/G1_best_f1.pth

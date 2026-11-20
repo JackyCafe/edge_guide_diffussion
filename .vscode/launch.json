@@ -1,0 +1,34 @@
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Train Stage 1",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/train.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--config",
+                "${workspaceFolder}/configs/stage1.yaml"
+            ],
+            "justMyCode": false,
+            "noDebug": true
+        },
+        {
+            "name": "Train Stage 2",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/train.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--config",
+                "${workspaceFolder}/configs/stage2.yaml"
+            ],
+            "justMyCode": false,
+            "noDebug": true
+        }
+    ]
+}

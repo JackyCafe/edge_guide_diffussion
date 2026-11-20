@@ -1,0 +1,5 @@
+include: stage1.yaml
+strategy:
+  kind: sa
+  weights: {wbce: 1.0, dice: 1.0, fm: 0.1, adv: 0.01}
+  bounds: {dice: [0.25, 2.0], fm: [0.0, 0.5], adv: [0.0, 0.05]}

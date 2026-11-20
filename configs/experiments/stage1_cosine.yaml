@@ -1,0 +1,8 @@
+include: ../stage1.yaml
+stage: 1
+strategy:
+  kind: cosine
+  start: {wbce: 0.8, dice: 0.5, fm: 0.0, adv: 0.0}
+  end: {wbce: 1.0, dice: 1.0, fm: 0.1, adv: 0.01}
+  lr_start: 0.0001
+  lr_end: 0.000001
